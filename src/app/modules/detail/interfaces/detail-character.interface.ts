@@ -1,15 +1,16 @@
 import { CharacterGenderEnum } from "../../home/enums/home-character-gender.enum";
 
 export interface DetailCharacter {
-    created:  string;
-    episode:  string[];
-    gender:   CharacterGenderEnum;
-    image:    string;
+
+    name: string;
+    status: string;
+    species: string;
+    type: string;
+    gender: CharacterGenderEnum;
+    origin: string;
     location: string;
-    name:     string;
-    origin:   string;
-    species:  string;
-    status:   string;
-    type:     string;
-    url:      string;
-  }
+    image: string;
+    episode: string[];
+    url: string;
+    created: Date;
+}
