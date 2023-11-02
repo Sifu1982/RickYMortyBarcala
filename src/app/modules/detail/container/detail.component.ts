@@ -25,7 +25,5 @@ export class DetailComponent implements OnInit {
                     console.log({ detailCharacter });
                 }
             })
-
     }
-
 }
