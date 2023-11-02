@@ -1,0 +1,39 @@
+.character-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #cecccc;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    border-radius: 12px;
+    
+
+    img {
+        max-width: 100%;
+        border-radius: 12px;
+    }
+
+    p {
+        display: flex;
+        padding: 0 25px;
+        height: 50px;
+        font-size: 16px;
+        line-height: 50px;
+        border-radius: 25px;
+        background-color: #f1f1f1;
+    }
+
+    h3 {
+        color: rgb(46, 45, 45);
+    font-size: 18px;
+    }
+
+
+}
+
+  
