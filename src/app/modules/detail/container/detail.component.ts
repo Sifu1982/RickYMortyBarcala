@@ -22,7 +22,6 @@ export class DetailComponent implements OnInit {
             .subscribe({
                 next: (detailCharacter: DetailCharacter) => {
                     this.detailCharacter = detailCharacter
-                    console.log({ detailCharacter });
                 }
             })
     }

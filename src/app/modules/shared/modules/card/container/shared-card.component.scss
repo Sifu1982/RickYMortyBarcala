@@ -1,62 +1,48 @@
 .character-card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background-color: #4461b1;
-    border: 1px solid #fffefe;
-    padding: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
-    margin: auto;
-    text-align: center;
+  align-items: center;
+  border-radius: 12px;
+  border: 1px solid ;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+
+  & img {
     border-radius: 12px;
+    max-width: 100%;
+  }
 
+  & p {
+    border-radius: 25px;
+    display: flex;
+    font-size: 16px;
+    line-height: 50px;
+    padding: 0 25px;
+  }
 
-    img {
-        max-width: 100%;
-        border-radius: 12px;
-    }
+  & h3 {
+    font-size: 18px;
+  }
 
-    p {
-        display: flex;
-        padding: 0 25px;
-        height: 50px;
-        font-size: 16px;
-        line-height: 50px;
-        border-radius: 25px;
-        background-color: #f1f1f1;
-    }
-
-    h3 {
-        color: rgb(46, 45, 45);
-        font-size: 18px;
-    }
-
-
-}
-
-.properties {
-    background-color: #ebebeb;
-    text-align: left;
-    padding: 15px;
-    margin-top: 15px;
-    border-radius:12px ;
+  .properties {
+    border-radius: 12px;
     font-family: sans-serif;
+    margin-top: 15px;
+    padding: 15px;
+    text-align: left;
 
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
+    & ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
     }
 
-    li {
-        
-        background-color: rgb(180, 180, 180);
-        border-radius: 12px;
-        display: inline-block;
-        font-size: 12px;
-        margin: 0 7px 7px 0;
-        padding: 7px;
+    & li {
+      border-radius: 12px;
+      display: inline-block;
+      font-size: 12px;
+      margin: 0 7px 7px 0;
+      padding: 7px;
     }
+  }
 }
