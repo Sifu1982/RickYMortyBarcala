@@ -1,10 +1,20 @@
 <div class="character-card">
-  <div >
+  <div>
     <img [src]=" character.image " [alt]=" character.name ">
-    <div>
+    <div class="properties">
       <h3><strong>{{ character.name }}</strong></h3>
-      <p>Gender: {{ character.gender }}</p>
-      <p>Origin: {{character.origin}}</p>
+      <div>
+        <ul>
+          <li>Gender: {{ character.gender }}</li>
+          <li>Origin: {{ character.origin }}</li>
+        </ul>
+        <ul *ngIf="isDetailPage">
+          <li>Created: {{character.created | date: 'dd/MM/yyyy'}}</li>
+          <li>Location: {{character.location}}</li>
+          <li>Species: {{character.species}}</li>
+          <li>Status: {{character.status}}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

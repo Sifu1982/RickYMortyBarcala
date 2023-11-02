@@ -3,15 +3,15 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: #cecccc;
-    border: 1px solid #ccc;
+    background-color: #4461b1;
+    border: 1px solid #fffefe;
     padding: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
     margin: auto;
     text-align: center;
     border-radius: 12px;
-    
+
 
     img {
         max-width: 100%;
@@ -30,10 +30,33 @@
 
     h3 {
         color: rgb(46, 45, 45);
-    font-size: 18px;
+        font-size: 18px;
     }
 
 
 }
 
-  
+.properties {
+    background-color: #ebebeb;
+    text-align: left;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius:12px ;
+    font-family: sans-serif;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        
+        background-color: rgb(180, 180, 180);
+        border-radius: 12px;
+        display: inline-block;
+        font-size: 12px;
+        margin: 0 7px 7px 0;
+        padding: 7px;
+    }
+}
