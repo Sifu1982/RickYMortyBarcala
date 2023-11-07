@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { DetailCharacter } from "../../../../detail/interfaces/detail-character.interface";
+import { HomeCharacter } from "src/app/modules/home/interfaces/home-character.interface";
 
 @Component({
   selector: 'app-shared-card',
@@ -9,12 +10,17 @@ import { DetailCharacter } from "../../../../detail/interfaces/detail-character.
 
 export class SharedCardComponent implements OnInit {
 
-  @Input() character!: DetailCharacter;
-  public isDetailPage: boolean = false;
+  @Input() detailCharacter!: DetailCharacter;
+  @Input() homeCharacter!: HomeCharacter;
+  @Input() isDetailPage: boolean = false;
 
-  ngOnInit(): void {
-    this.isDetailPage = true;
+  public character!: HomeCharacter | DetailCharacter;
+
+  ngOnInit() {
+    if (this.isDetailPage) {
+      this.character = this.detailCharacter;
+    } else {
+      this.character = this.homeCharacter;
+    }
   }
-
-
 }

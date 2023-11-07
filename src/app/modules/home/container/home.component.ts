@@ -10,7 +10,8 @@ export class HomeComponent implements OnInit {
 
   //TODO:AlvaroBM1 crear variable publica para control de error
   public characters: HomeCharacter[] = [];
-
+  public isDetailPage = false;
+  
   constructor(private charactersService: HomeService) { }
 
   ngOnInit(): void {

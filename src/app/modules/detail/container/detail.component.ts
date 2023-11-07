@@ -9,7 +9,7 @@ import { DetailService } from "../services/detail.service";
 export class DetailComponent implements OnInit {
 
     public detailCharacter!: DetailCharacter;
-
+    public isDetailPage = true;
     constructor(private detailService: DetailService) { }
 
     ngOnInit(): void {

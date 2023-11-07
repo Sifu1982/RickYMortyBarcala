@@ -4,13 +4,15 @@ import { NgModule } from '@angular/core';
 import { HomeComponent } from './container/home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeService } from './services/home.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [HomeComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [HomeService]
 })
