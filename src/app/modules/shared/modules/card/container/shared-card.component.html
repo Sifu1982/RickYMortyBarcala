@@ -9,10 +9,10 @@
           <li>Origin: {{ character.origin }}</li>
         </ul>
         <ul *ngIf="isDetailPage">
-          <!-- <li>Created: {{character.created | date: 'dd/MM/yyyy'}}</li>
-          <li>Location: {{character.location}}</li>
-          <li>Species: {{character.species}}</li>
-          <li>Status: {{character.status}}</li> -->
+          <li>Created: {{detailCharacterType.created | date: 'dd/MM/yyyy'}}</li>
+          <li>Location: {{detailCharacterType.location}}</li>
+          <li>Species: {{detailCharacterType.species}}</li>
+          <li>Status: {{detailCharacterType.status}}</li>
         </ul>
       </div>
     </div>

@@ -1,1 +1,1 @@
-<app-shared-card [detailCharacter]="detailCharacter"></app-shared-card>
+<app-shared-card *ngIf="character" [detailCharacter]="character" [isDetailPage]="isDetailPage"></app-shared-card>

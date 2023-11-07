@@ -8,8 +8,9 @@ import { DetailService } from "../services/detail.service";
 
 export class DetailComponent implements OnInit {
 
-    public detailCharacter!: DetailCharacter;
+    public character!: DetailCharacter;
     public isDetailPage = true;
+
     constructor(private detailService: DetailService) { }
 
     ngOnInit(): void {
@@ -21,7 +22,10 @@ export class DetailComponent implements OnInit {
             .getCharacterById(id)
             .subscribe({
                 next: (detailCharacter: DetailCharacter) => {
-                    this.detailCharacter = detailCharacter
+                    this.character = detailCharacter
+                },
+                error: (error: any) => {
+                    console.log('Error solicitud Http', error);
                 }
             })
     }
