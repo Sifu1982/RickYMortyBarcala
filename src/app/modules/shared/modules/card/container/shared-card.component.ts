@@ -13,6 +13,11 @@ export class SharedCardComponent implements OnInit {
   @Input() detailCharacter!: DetailCharacter;
   @Input() homeCharacter!: HomeCharacter;
   @Input() isDetailPage: boolean = false;
+  @Input() hasCreated: boolean = false;
+  @Input() hasLocation: boolean = false;
+  @Input() hasSpecies: boolean = false;
+  @Input() hasStatus: boolean = false;
+
 
   public character!: DetailCharacter | HomeCharacter;
 
