@@ -1,25 +1,18 @@
 import { Component, Input } from "@angular/core";
-import { SharedCard } from "../interfaces/shared-card.interface";
 import { DetailComponent } from '../../../detail/container/detail.component';
-import { Router } from "@angular/router";
+import { Card } from "../interfaces/shared-card.interface";
 
 @Component({
-  selector: 'app-shared-card',
+  selector: 'rm-card',
   templateUrl: 'shared-card.component.html',
   styleUrls: ['shared-card.component.scss']
 })
 
 export class SharedCardComponent {
 
-  @Input() sharedCharacter!: SharedCard;
-  
+  @Input() character!: Card;
+
   public detail !: DetailComponent
-
-  constructor(private router: Router) { }
-
-  onclick(): void{
-    this.router.navigate(['/detail', this.sharedCharacter.id]);
-  }
 
 }
 

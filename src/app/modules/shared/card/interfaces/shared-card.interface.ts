@@ -1,6 +1,6 @@
 import { CharacterGenderEnum } from "src/app/modules/home/enums/home-character-gender.enum";
 
-export interface SharedCard {
+export interface Card {
     created?: Date;
     episode?: string[];
     gender: CharacterGenderEnum;

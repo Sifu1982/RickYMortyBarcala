@@ -4,7 +4,8 @@ import { DetailCharacter } from "../interfaces/detail-character.interface";
 import { DetailService } from "../services/detail.service";
 
 @Component({
-  templateUrl: 'detail.component.html'
+  templateUrl: 'detail.component.html',
+  styleUrls: ['detail.component.scss']
 })
 
 export class DetailComponent implements OnInit {

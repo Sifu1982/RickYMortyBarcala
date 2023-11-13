@@ -1,8 +1,7 @@
-<!-- TODO:AlvaroBM1 cambiar titulo para que se vea a nivel global -->
-<h1>Rick y Morty</h1>
-
-<div *ngIf="characters.length > 0">
-  <div *ngFor="let character of characters" class="character-list-card">
-    <app-shared-card [sharedCharacter]="character"></app-shared-card>
-  </div>
+<div *ngIf="characters" class="home__cards">
+  <ng-container *ngFor="let character of characters">
+    <div (click)="navigateToDetail(character.id)" class="home__cards--button">
+      <rm-card [character]="character" class="home__cards--card"></rm-card>
+    </div>
+  </ng-container>
 </div>

@@ -1,10 +1,13 @@
-<button (click)="onclick()" class="character-card" *ngIf="sharedCharacter">
-  <img [src]=" sharedCharacter.image " [alt]=" sharedCharacter.name ">
-  <h3><strong>{{ sharedCharacter.name }}</strong></h3>
-  <div>Gender: {{ sharedCharacter.gender }}</div>
-  <div>Origin: {{ sharedCharacter.origin }}</div>
-  <div *ngIf="sharedCharacter.created">Created: {{sharedCharacter.created | date: 'dd/MM/yyyy'}}</div>
-  <div *ngIf="sharedCharacter.location">Location: {{sharedCharacter.location}}</div>
-  <div *ngIf="sharedCharacter.species">Species: {{sharedCharacter.species}}</div>
-  <div *ngIf="sharedCharacter.status">Status: {{sharedCharacter.status}}</div>
-</button>
+<div class="shared-card__wrapper">
+  <img [src]=" character.image " [alt]=" character.name " class="shared-card__image">
+  <ul class="shared-card__information-wrapper">
+    <li class="shared-card__information-wrapper--title"><span class="shared-card__information-wrapper--name">{{ character.name }}</span></li>
+    <li class="shared-card__information-wrapper--data">Gender: {{ character.gender }}</li>
+    <li class="shared-card__information-wrapper--data">Origin: {{ character.origin }}</li>
+    <li *ngIf="character.created" class="shared-card__information-wrapper--data">Created: {{character.created | date:
+      'dd/MM/yyyy'}}</li>
+    <li *ngIf="character.location" class="shared-card__information-wrapper--data">Location: {{character.location}}</li>
+    <li *ngIf="character.species" class="shared-card__information-wrapper--data">Species: {{character.species}}</li>
+    <li *ngIf="character.status" class="shared-card__information-wrapper--data">Status: {{character.status}}</li>
+  </ul>
+</div>

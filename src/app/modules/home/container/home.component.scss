@@ -1,0 +1,12 @@
+.home {
+
+  &__cards{
+    display: flex;
+    flex-wrap: wrap;
+
+    &--button {
+      margin: 0 12px 24px 0;
+    }
+  }
+
+}
