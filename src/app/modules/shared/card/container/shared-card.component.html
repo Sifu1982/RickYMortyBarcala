@@ -1,4 +1,4 @@
-<div class="character-card" *ngIf="sharedCharacter">
+<button (click)="onclick()" class="character-card" *ngIf="sharedCharacter">
   <img [src]=" sharedCharacter.image " [alt]=" sharedCharacter.name ">
   <h3><strong>{{ sharedCharacter.name }}</strong></h3>
   <div>Gender: {{ sharedCharacter.gender }}</div>
@@ -7,4 +7,4 @@
   <div *ngIf="sharedCharacter.location">Location: {{sharedCharacter.location}}</div>
   <div *ngIf="sharedCharacter.species">Species: {{sharedCharacter.species}}</div>
   <div *ngIf="sharedCharacter.status">Status: {{sharedCharacter.status}}</div>
-</div>
+</button>

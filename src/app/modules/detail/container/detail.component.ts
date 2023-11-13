@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 import { DetailCharacter } from "../interfaces/detail-character.interface";
 import { DetailService } from "../services/detail.service";
 
@@ -9,19 +10,21 @@ import { DetailService } from "../services/detail.service";
 export class DetailComponent implements OnInit {
 
   public character!: DetailCharacter;
-  public isDetailPage: boolean = true;
-  public hasCreated: boolean = true;
-  public hasLocation: boolean = true;
-  public hasSpecies: boolean = true;
-  public hasStatus: boolean = true;
 
-  constructor(private detailService: DetailService) { }
+  constructor(
+    private detailService: DetailService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    this.getCharacterById('1');
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.getCharacterById(Number(id));
+    }
   }
 
-  private getCharacterById(id: string): void {
+  public getCharacterById(id: number): void {
     this.detailService
       .getCharacterById(id)
       .subscribe({
@@ -32,5 +35,9 @@ export class DetailComponent implements OnInit {
           console.log('Error solicitud Http', error);
         }
       })
+  }
+
+  goToHome(): void {
+    this.router.navigate(['/home'])
   }
 }

@@ -4,6 +4,7 @@ export interface SharedCard {
     created?: Date;
     episode?: string[];
     gender: CharacterGenderEnum;
+    id: number;
     image: string;
     location?: string;
     name: string;
