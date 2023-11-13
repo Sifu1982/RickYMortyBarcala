@@ -1,0 +1,10 @@
+<div class="character-card" *ngIf="sharedCharacter">
+  <img [src]=" sharedCharacter.image " [alt]=" sharedCharacter.name ">
+  <h3><strong>{{ sharedCharacter.name }}</strong></h3>
+  <div>Gender: {{ sharedCharacter.gender }}</div>
+  <div>Origin: {{ sharedCharacter.origin }}</div>
+  <div *ngIf="sharedCharacter.created">Created: {{sharedCharacter.created | date: 'dd/MM/yyyy'}}</div>
+  <div *ngIf="sharedCharacter.location">Location: {{sharedCharacter.location}}</div>
+  <div *ngIf="sharedCharacter.species">Species: {{sharedCharacter.species}}</div>
+  <div *ngIf="sharedCharacter.status">Status: {{sharedCharacter.status}}</div>
+</div>

@@ -1,0 +1,15 @@
+.character-card {
+  align-items: center;
+  border-radius: 12px;
+  border: 1px solid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px;
+  text-align: center;
+
+  & img {
+    border-radius: 12px;
+    max-width: 100%;
+  }
+}
