@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { HomeCharacter } from "src/app/modules/home/interfaces/home-character.interface";
-import { DetailCharacter } from "../../../../detail/interfaces/detail-character.interface";
+import { Component, Input } from "@angular/core";
+import { SharedCard } from "../interfaces/shared-card.interface";
 
 @Component({
   selector: 'app-shared-card',
@@ -8,28 +7,8 @@ import { DetailCharacter } from "../../../../detail/interfaces/detail-character.
   styleUrls: ['shared-card.component.scss']
 })
 
-export class SharedCardComponent implements OnInit {
+export class SharedCardComponent {
 
-  @Input() detailCharacter!: DetailCharacter;
-  @Input() homeCharacter!: HomeCharacter;
-  @Input() isDetailPage: boolean = false;
-  @Input() hasCreated: boolean = false;
-  @Input() hasLocation: boolean = false;
-  @Input() hasSpecies: boolean = false;
-  @Input() hasStatus: boolean = false;
+  @Input() sharedCharacter!: SharedCard;
 
-
-  public character!: DetailCharacter | HomeCharacter;
-
-  ngOnInit() {
-    if (this.isDetailPage) {
-      this.character = this.detailCharacter;
-    } else {
-      this.character = this.homeCharacter;
-    }
-  }
-
-  get detailCharacterType(): DetailCharacter {
-    return this.character as DetailCharacter;
-  }
 }

@@ -2,7 +2,7 @@
 <h1>Rick y Morty</h1>
 
 <div *ngIf="characters.length > 0">
-    <div *ngFor="let character of characters" class="character-list-card">
-      <app-shared-card [homeCharacter]="character" [isDetailPage]="isDetailPage"></app-shared-card>
+  <div *ngFor="let character of characters" class="character-list-card">
+    <app-shared-card [sharedCharacter]="character"></app-shared-card>
   </div>
 </div>
