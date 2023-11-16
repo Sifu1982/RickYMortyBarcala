@@ -1,6 +1,6 @@
 <div *ngIf="character" class="detail__wrapper">
   <div class="detail__button">
-    <rm-button (click)="goToHome()"
+    <rm-button (rmButtonClick)="goToHome()"
       [rmButtonConfig]="{ text: 'Go Home', size: buttonSizeEnum.MEDIUM, color: buttonColorEnum.INFO }">
     </rm-button>
   </div>

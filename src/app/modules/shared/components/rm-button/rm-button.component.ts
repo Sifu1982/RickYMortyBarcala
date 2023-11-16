@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { RmButton, ButtonSizeEnum, ButtonColorEnum } from '../../interfaces/rm-button.interface';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ButtonColorEnum, ButtonSizeEnum, RmButton } from '../../interfaces/rm-button.interface';
 
 @Component({
   selector: 'rm-button',
@@ -10,6 +10,13 @@ import { RmButton, ButtonSizeEnum, ButtonColorEnum } from '../../interfaces/rm-b
 export class RmButtonComponent {
 
   @Input() rmButtonConfig!: RmButton;
+  @Output() rmButtonClick: EventEmitter<void> = new EventEmitter<void>();
+
   ButtonSizeEnum = ButtonSizeEnum;
   ButtonColorEnum = ButtonColorEnum;
+
+  onclick(): void {
+    this.rmButtonClick.emit();
+  }
 }
+
