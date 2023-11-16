@@ -1,0 +1,13 @@
+<button [ngClass]="{
+    'rm-button': true,
+    'rm-button__small': rmButtonConfig.size === ButtonSizeEnum.SMALL,
+    'rm-button__medium': rmButtonConfig.size === ButtonSizeEnum.MEDIUM,
+    'rm-button__big': rmButtonConfig.size === ButtonSizeEnum.BIG,
+    'rm-button__success': rmButtonConfig.color === ButtonColorEnum.SUCCESS,
+    'rm-button__error': rmButtonConfig.color === ButtonColorEnum.ERROR,
+    'rm-button__info': rmButtonConfig.color === ButtonColorEnum.INFO,
+    'rm-button__warning': rmButtonConfig.color === ButtonColorEnum.WARNING,
+    'rm-button__default': rmButtonConfig.color === ButtonColorEnum.DEFAULT
+  }">
+  {{ rmButtonConfig.text }}
+</button>

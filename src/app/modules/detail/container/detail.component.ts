@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { DetailCharacter } from "../interfaces/detail-character.interface";
 import { DetailService } from "../services/detail.service";
+import { ButtonColorEnum, ButtonSizeEnum } from "../../shared/interfaces/rm-button.interface";
 
 @Component({
   templateUrl: 'detail.component.html',
@@ -11,6 +12,8 @@ import { DetailService } from "../services/detail.service";
 export class DetailComponent implements OnInit {
 
   public character!: DetailCharacter;
+  public buttonSizeEnum = ButtonSizeEnum;
+  public buttonColorEnum = ButtonColorEnum;
 
   constructor(
     private detailService: DetailService,

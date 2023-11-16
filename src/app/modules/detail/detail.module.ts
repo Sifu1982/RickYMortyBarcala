@@ -6,13 +6,13 @@ import { DetailRoutingModule } from "./detail-routing.module";
 import { DetailService } from './services/detail.service';
 
 @NgModule({
-    declarations: [DetailComponent],
-    imports: [
-        DetailRoutingModule,
-        SharedModule,
-        CommonModule
-    ],
-    providers: [DetailService]
+  declarations: [DetailComponent],
+  imports: [
+    DetailRoutingModule,
+    SharedModule,
+    CommonModule
+  ],
+  providers: [DetailService]
 })
 
 export class DetailModule { }

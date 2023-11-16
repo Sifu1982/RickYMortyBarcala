@@ -1,21 +1,20 @@
 export interface RmButton {
-  texto: string;
+  text: string;
   size: ButtonSizeEnum;
-  color: ColorEnum ;
-  backGroundColor: BackgroundColorEnum;
+  color: ButtonColorEnum ;
 
 }
 
 export enum ButtonSizeEnum {
-  SMALL = 'SMALL',
-  MEDIUM = 'MEDIUM',
-  LARGE = 'LARGE'
+  SMALL = 'small',
+  MEDIUM = 'medium',
+  BIG = 'big'
 }
 
-export enum ColorEnum {
-
-}
-
-export enum BackgroundColorEnum {
-
+export enum ButtonColorEnum {
+  SUCCESS = 'success',
+  ERROR = 'error',
+  INFO = 'info',
+  WARNING = 'warning',
+  DEFAULT = 'default'
 }

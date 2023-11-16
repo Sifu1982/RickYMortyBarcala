@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { RmButton, ButtonSizeEnum, ButtonColorEnum } from '../../interfaces/rm-button.interface';
 
 @Component({
   selector: 'rm-button',
@@ -8,4 +9,7 @@ import { Component } from '@angular/core';
 
 export class RmButtonComponent {
 
+  @Input() rmButtonConfig!: RmButton;
+  ButtonSizeEnum = ButtonSizeEnum;
+  ButtonColorEnum = ButtonColorEnum;
 }

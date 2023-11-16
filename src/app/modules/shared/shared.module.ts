@@ -11,7 +11,7 @@ import { RmButtonComponent } from "./components/rm-button/rm-button.component";
     CommonModule,
     HttpClientModule
   ],
-  exports: [SharedCardComponent]
+  exports: [SharedCardComponent, RmButtonComponent]
 })
 
 export class SharedModule { }
