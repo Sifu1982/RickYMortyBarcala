@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HomeCharacter } from '../interfaces/home-character.interface';
 import { HomeService } from '../services/home.service';
-import { Router } from '@angular/router';
 
 @Component({
   templateUrl: 'home.component.html',
@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   public characters: HomeCharacter[] = [];
   public isDetailPage = false;
 
-  constructor(private charactersService: HomeService, private router: Router ) { }
+  constructor(private charactersService: HomeService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllCharacters();
@@ -34,7 +34,25 @@ export class HomeComponent implements OnInit {
       })
   }
 
-  navigateToDetail(id: number): void{
+  navigateToDetail(id: number): void {
     this.router.navigate(['/detail', id]);
+  }
+
+  onGenderChange(gender: string): void {
+    if (gender === 'All') {
+      this.getAllCharacters();
+    } else {
+      this.charactersService
+        .getCharacterByGender(gender)
+        .subscribe({
+          next: (homeCharacters: HomeCharacter[]) => {
+            this.characters = homeCharacters
+          }
+          ,
+          error: (error: any) => {
+            console.log('Error solicitud Http', error);
+          }
+        })
+    }
   }
 }
