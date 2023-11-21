@@ -1,0 +1,67 @@
+.rm-button {
+  border-radius: 4px;
+  cursor: pointer;
+
+  &__small {
+    font-size: small;
+    width: 100px;
+    height: 20px;
+  }
+
+  &__medium {
+    font-size: medium;
+    width: 150px;
+    height: 40px;
+  }
+
+  &__big {
+    font-size: xx-large;
+    width: 200px;
+    height: 60px;
+  }
+
+  &__success {
+    background: #2ecc71;
+    color: #ffffff;
+
+    &:hover {
+      background: #27ae60;
+    }
+  }
+
+  &__error {
+    background: #e74c3c;
+    color: #ffffff;
+
+    &:hover {
+      background: #c0392b;
+    }
+  }
+
+  &__info {
+    background: #3498db;
+    color: #ffffff;
+
+    &:hover {
+      background: #2980b9;
+    }
+  }
+
+  &__warning {
+    background: #f1c40f;
+    color: #ffffff;
+
+    &:hover {
+      background: #f39c12;
+    }
+  }
+
+  &__default {
+    background: #adadad;
+    color: #ffffff;
+
+    &:hover {
+      background: #8a8a8a;
+    }
+  }
+}

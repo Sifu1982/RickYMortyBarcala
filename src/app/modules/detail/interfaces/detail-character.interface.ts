@@ -1,7 +1,7 @@
 import { CharacterGenderEnum } from "../../home/enums/home-character-gender.enum";
 
 export interface DetailCharacter {
-
+    id: number;
     name: string;
     status: string;
     species: string;

@@ -1,0 +1,16 @@
+.detail {
+
+  &__wrapper {
+    padding: 100px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+
+    &--content {
+      font-size: xx-large;
+    }
+  }
+}

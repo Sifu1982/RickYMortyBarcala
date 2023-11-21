@@ -13,7 +13,7 @@ export class DetailService {
 
   private baseUrl = `${development.apiUrl}/character/`;
 
-  getCharacterById(id: string): Observable<DetailCharacter> {
+  getCharacterById(id: number): Observable<DetailCharacter> {
     const url = `${this.baseUrl}${id}`;
     return this.http.get<DetailCharacterResponse>(url).pipe(
       map<DetailCharacterResponse, DetailCharacter>((character: DetailCharacterResponse) =>
@@ -21,6 +21,7 @@ export class DetailService {
         created: character.created,
         episode: character.episode,
         gender: character.gender,
+        id: character.id,
         image: character.image,
         location: character.location.name,
         name: character.name,

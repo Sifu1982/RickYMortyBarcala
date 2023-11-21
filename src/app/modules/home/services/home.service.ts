@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
+import { development } from 'src/app/environments/environment.development';
 import { Character, CharacterResponse } from '../interfaces/character-response.interface';
 import { HomeCharacter } from '../interfaces/home-character.interface';
-import { development } from 'src/app/environments/environment.development';
 
 
 @Injectable()
 export class HomeService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   private baseUrl = `${development.apiUrl}`;
 
@@ -19,9 +19,10 @@ export class HomeService {
       map<CharacterResponse, HomeCharacter[]>((characterResponse: CharacterResponse) =>
         characterResponse.results.map((character: Character) =>
         ({
+          gender: character.gender,
+          id: character.id,
           image: character.image,
           name: character.name,
-          gender: character.gender,
           origin: character.origin.name,
         }))
       )
