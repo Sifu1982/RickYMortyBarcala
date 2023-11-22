@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RmForm } from '../../shared/interfaces/rm-form.interface';
+import { CharacterGenderEnum } from '../enums/home-character-gender.enum';
 import { HomeCharacter } from '../interfaces/home-character.interface';
 import { HomeService } from '../services/home.service';
 
@@ -38,12 +40,12 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/detail', id]);
   }
 
-  onGenderChange(gender: string): void {
-    if (gender === 'All') {
+  onFormChange(form: RmForm): void {
+    if (form.gender === CharacterGenderEnum.ALL) {
       this.getAllCharacters();
     } else {
       this.charactersService
-        .getCharacterByGender(gender)
+        .getCharacterByGender(form.gender)
         .subscribe({
           next: (homeCharacters: HomeCharacter[]) => {
             this.characters = homeCharacters

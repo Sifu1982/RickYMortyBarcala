@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { CharacterGenderEnum } from "src/app/modules/home/enums/home-character-gender.enum";
+import { RmForm } from "../../interfaces/rm-form.interface";
 
 @Component({
   selector: 'rm-form',
@@ -10,12 +11,12 @@ import { CharacterGenderEnum } from "src/app/modules/home/enums/home-character-g
 
 export class RmFormComponent implements OnInit {
 
-  @Output() genderChanged = new EventEmitter<string>();
+  @Output() genderChanged = new EventEmitter<RmForm>();
 
   public genderEnum = CharacterGenderEnum;
   public genderControl!: FormControl;
   public searchForm!: FormGroup;
-  public genderOptions: string[] = ['All', ...Object.values(CharacterGenderEnum)];
+  public genderOptions: CharacterGenderEnum[] = [...Object.values(CharacterGenderEnum)];
 
   constructor(private fb: FormBuilder) {
 
@@ -31,8 +32,8 @@ export class RmFormComponent implements OnInit {
   }
 
   onGenderChange() {
-    this.genderControl.valueChanges.subscribe((formValue: string) => {
-      this.genderChanged.emit(formValue);
+    this.genderControl.valueChanges.subscribe((formValue: CharacterGenderEnum) => {
+      this.genderChanged.emit({ gender: formValue });
     });
   }
 }
