@@ -31,8 +31,6 @@ export class RmFormComponent implements OnInit {
 
     this.searchForm.get('gender')?.valueChanges.subscribe((formValue: CharacterGenderEnum) => {
       this.genderChanged.emit({ gender: formValue });
-      console.log(formValue);
-
     });
   }
 }
