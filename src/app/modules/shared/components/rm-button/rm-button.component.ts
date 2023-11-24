@@ -20,6 +20,8 @@ export class RmButtonComponent {
   }
 
   rmButtonConfigOptions() {
+    console.log('Hola desde rmButtonConfig');
+
     let size: string;
     let color: string;
 
