@@ -5,7 +5,6 @@ import { development } from 'src/app/environments/environment.development';
 import { Character, CharacterResponse } from '../interfaces/character-response.interface';
 import { HomeCharacter } from '../interfaces/home-character.interface';
 
-
 @Injectable()
 export class HomeService {
 
@@ -29,8 +28,13 @@ export class HomeService {
     );
   }
 
-  getCharacterByGender(gender: string): Observable<HomeCharacter[]> {
-    const url = `${this.baseUrl}/character/?gender=${gender}`;
+  getCharacterForm(gender: string, name: string): Observable<HomeCharacter[]> {
+    let url: string;
+    if (gender === 'All') {
+      url = `${this.baseUrl}/character/?name=${name}`;
+    } else {
+      url = `${this.baseUrl}/character/?gender=${gender}&name=${name}`;
+    }
     return this.http.get<CharacterResponse>(url).pipe(
       map<CharacterResponse, HomeCharacter[]>((characterResponse: CharacterResponse) =>
         characterResponse.results.map((character: Character) =>
