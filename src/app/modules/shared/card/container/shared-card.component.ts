@@ -1,5 +1,4 @@
 import { Component, Input } from "@angular/core";
-import { DetailComponent } from '../../../detail/container/detail.component';
 import { Card } from "../interfaces/shared-card.interface";
 
 @Component({
@@ -9,11 +8,7 @@ import { Card } from "../interfaces/shared-card.interface";
 })
 
 export class SharedCardComponent {
-
   @Input() character!: Card;
-
-  public detail !: DetailComponent
-
 }
 
 

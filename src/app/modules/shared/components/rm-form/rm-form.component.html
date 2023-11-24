@@ -1,0 +1,10 @@
+<form [formGroup]="searchForm">
+  <div>
+    <label>Gender:</label>
+    <select formControlName="gender">
+      <option *ngFor="let gender of genderOptions" [value]="gender">
+        {{ gender }}
+      </option>
+    </select>
+  </div>
+</form>

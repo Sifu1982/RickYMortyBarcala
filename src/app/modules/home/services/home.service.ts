@@ -28,4 +28,20 @@ export class HomeService {
       )
     );
   }
+
+  getCharacterByGender(gender: string): Observable<HomeCharacter[]> {
+    const url = `${this.baseUrl}/character/?gender=${gender}`;
+    return this.http.get<CharacterResponse>(url).pipe(
+      map<CharacterResponse, HomeCharacter[]>((characterResponse: CharacterResponse) =>
+        characterResponse.results.map((character: Character) =>
+        ({
+          gender: character.gender,
+          id: character.id,
+          image: character.image,
+          name: character.name,
+          origin: character.origin.name,
+        }))
+      )
+    );
+  }
 }
