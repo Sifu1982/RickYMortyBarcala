@@ -17,16 +17,13 @@ export class RmFormComponent implements OnInit {
   public searchForm!: FormGroup;
   public genderOptions: CharacterGenderEnum[] = [...Object.values(CharacterGenderEnum)];
 
-  constructor() { }
-
   ngOnInit(): void {
     this.onGenderChange()
   }
 
-  onGenderChange() {
-
+  private onGenderChange() {
     this.searchForm = new FormGroup({
-      gender: new FormControl('All')
+      gender: new FormControl(CharacterGenderEnum.ALL)
     });
 
     this.searchForm.get('gender')?.valueChanges.subscribe((formValue: CharacterGenderEnum) => {

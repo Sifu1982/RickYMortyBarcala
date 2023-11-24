@@ -11,14 +11,12 @@ import { DetailService } from "../services/detail.service";
 
 export class DetailComponent implements OnInit {
 
-  public character!: DetailCharacter;
-  public buttonSizeEnum = ButtonSizeEnum;
-  public buttonColorEnum = ButtonColorEnum;
   public buttonConfig: RmButton = {
     text: 'Go Home',
-    size: this.buttonSizeEnum.MEDIUM,
-    color: this.buttonColorEnum.INFO
+    size: ButtonSizeEnum.MEDIUM,
+    color: ButtonColorEnum.INFO
   };
+  public character!: DetailCharacter;
 
   constructor(
     private detailService: DetailService,
@@ -43,7 +41,7 @@ export class DetailComponent implements OnInit {
       })
   }
 
-  goToHome(): void {
+  public goToHome(): void {
     this.router.navigate(['/home'])
   }
 
