@@ -1,3 +1,3 @@
-<button class="rm-button" [ngClass]="rmButtonConfigOptions()" (click)="onclick()">
+<button class="rm-button" [ngClass]="[color, size]" (click)="onclick()">
   {{ rmButtonConfig.text }}
 </button>
