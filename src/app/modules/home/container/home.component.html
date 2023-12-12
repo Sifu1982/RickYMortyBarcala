@@ -1,4 +1,7 @@
-<rm-form (genderChanged)="onFormChange($event)"></rm-form>
+<rm-form (formChanged)="onFormChange($event)" (resetPressed)="onResetPressed()"></rm-form>
+<div *ngIf="characterNotFound" class="not-found-message">
+  Character not found
+</div>
 <div *ngIf="characters" class="home__cards">
   <ng-container *ngFor="let character of characters">
     <div (click)="navigateToDetail(character.id)" class="home__cards--button">
@@ -6,3 +9,6 @@
     </div>
   </ng-container>
 </div>
+<rm-pagination [disableButton]="disabledButton" (nextPressed)="getPageCharacters('next')"
+  (prevPressed)="getPageCharacters('prev')">
+</rm-pagination>

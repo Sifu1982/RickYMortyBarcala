@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { CharacterGenderEnum } from "src/app/modules/home/enums/home-character-gender.enum";
+import { ButtonColorEnum, ButtonSizeEnum, RmButton } from "../../interfaces/rm-button.interface";
 import { RmForm } from "../../interfaces/rm-form.interface";
 
 @Component({
@@ -11,23 +12,36 @@ import { RmForm } from "../../interfaces/rm-form.interface";
 
 export class RmFormComponent implements OnInit {
 
-  @Output() genderChanged = new EventEmitter<RmForm>();
+  @Output() formChanged = new EventEmitter<RmForm>();
+  @Output() resetPressed = new EventEmitter<RmForm>();
 
   public genderEnum = CharacterGenderEnum;
   public searchForm!: FormGroup;
   public genderOptions: CharacterGenderEnum[] = [...Object.values(CharacterGenderEnum)];
 
+  public buttonConfig: RmButton = {
+    text: 'Reset',
+    size: ButtonSizeEnum.SMALL,
+    color: ButtonColorEnum.WARNING
+  };
+
   ngOnInit(): void {
-    this.onGenderChange()
+    this.onFormChange()
   }
 
-  private onGenderChange() {
+  private onFormChange() {
     this.searchForm = new FormGroup({
+      name: new FormControl(''),
       gender: new FormControl(CharacterGenderEnum.ALL)
     });
-
-    this.searchForm.get('gender')?.valueChanges.subscribe((formValue: CharacterGenderEnum) => {
-      this.genderChanged.emit({ gender: formValue });
+    this.searchForm.valueChanges.subscribe((formValue: RmForm) => {
+      this.formChanged.emit(formValue);
     });
+  }
+
+  public onResetPressed() {
+    this.searchForm.get('name')?.setValue('');
+    this.searchForm.get('gender')?.setValue(CharacterGenderEnum.ALL);
+    this.resetPressed.emit()
   }
 }
