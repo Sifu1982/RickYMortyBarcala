@@ -1,0 +1,4 @@
+<div>
+  <rm-button *ngIf="!disableButton" (rmButtonClick)="onPrevPressed()" [rmButtonConfig]="prevButtonConfig"></rm-button>
+  <rm-button (rmButtonClick)="onNextPressed()" [rmButtonConfig]="nextButtonConfig"></rm-button>
+</div>

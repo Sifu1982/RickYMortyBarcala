@@ -8,13 +8,15 @@ import { HomeService } from '../services/home.service';
 @Component({
   templateUrl: 'home.component.html',
   styleUrls: ['home.component.scss']
-
 })
-export class HomeComponent implements OnInit {
 
+export class HomeComponent implements OnInit {
   //TODO:AlvaroBM1 crear variable publica para control de error
   public characters: HomeCharacter[] = [];
-  public isDetailPage = false;
+  public characterNotFound = false;
+  public disabledButton = true;
+  public gender = '';
+  public name = '';
 
   constructor(private charactersService: HomeService, private router: Router) { }
 
@@ -41,11 +43,14 @@ export class HomeComponent implements OnInit {
   }
 
   onFormChange(form: RmForm): void {
-    if (form.gender === CharacterGenderEnum.ALL) {
+    this.characterNotFound = false;
+    if (form.gender === CharacterGenderEnum.ALL && !form.name) {
       this.getAllCharacters();
     } else {
+      this.gender = form.gender;
+      this.name = form.name;
       this.charactersService
-        .getCharacterByGender(form.gender)
+        .getCharacterForm(form.gender, form.name)
         .subscribe({
           next: (homeCharacters: HomeCharacter[]) => {
             this.characters = homeCharacters
@@ -53,8 +58,37 @@ export class HomeComponent implements OnInit {
           ,
           error: (error: any) => {
             console.log('Error solicitud Http', error);
+            this.characterNotFound = true;
+            this.characters = [];
           }
         })
     }
+  }
+
+  public getPageCharacters(page: string): void {
+    this.charactersService
+      .getCharactersByPage(this.gender, this.name, page)
+      .subscribe({
+        next: (homeCharacters: HomeCharacter[]) => {
+          this.characters = homeCharacters
+          this.updateDisabledButton();
+        }
+        ,
+        error: (error: any) => {
+          console.log('Error solicitud Http', error);
+          this.characterNotFound = true;
+          this.characters = [];
+          this.updateDisabledButton();
+        }
+      })
+  }
+
+  public onResetPressed() {
+    this.gender = ''
+    this.name = ''
+  }
+
+  private updateDisabledButton(): void {
+    this.disabledButton = this.charactersService.isPrevPageNull();
   }
 }
