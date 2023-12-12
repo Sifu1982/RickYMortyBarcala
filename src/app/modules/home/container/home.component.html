@@ -1,5 +1,5 @@
-<rm-form (formChanged)="onFormChange($event)"></rm-form>
-<div *ngIf="characterNotFound" class="not-found-message">
+<rm-form (formChanged)="onFormChange($event)" (resetPressed)="($event)"></rm-form>
+<div *ngIf="characters.length === 0" class="not-found-message">
   Character not found
 </div>
 <div *ngIf="characters" class="home__cards">

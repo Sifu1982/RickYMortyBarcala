@@ -13,10 +13,12 @@ import { RmForm } from "../../interfaces/rm-form.interface";
 export class RmFormComponent implements OnInit {
 
   @Output() formChanged = new EventEmitter<RmForm>();
+  @Output() resetPressed = new EventEmitter<RmForm>();
 
   public genderEnum = CharacterGenderEnum;
   public searchForm!: FormGroup;
   public genderOptions: CharacterGenderEnum[] = [...Object.values(CharacterGenderEnum)];
+  public isFormChanged = false;
 
   public buttonConfig: RmButton = {
     text: 'Reset',
@@ -33,14 +35,15 @@ export class RmFormComponent implements OnInit {
       name: new FormControl(''),
       gender: new FormControl(CharacterGenderEnum.ALL)
     });
-
     this.searchForm.valueChanges.subscribe((formValue: RmForm) => {
+      this.isFormChanged = true;
       this.formChanged.emit(formValue);
     });
   }
 
   public onResetPressed() {
-    this.searchForm.get('name')?.setValue('');
-    this.searchForm.get('gender')?.setValue(CharacterGenderEnum.ALL);
+    this.searchForm.reset({ gender: 'All', name:''})
+    this.resetPressed.emit();
+    this.isFormChanged = false;
   }
 }

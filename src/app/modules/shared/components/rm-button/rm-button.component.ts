@@ -10,6 +10,7 @@ import { ButtonColorEnum, ButtonSizeEnum, RmButton } from '../../interfaces/rm-b
 export class RmButtonComponent implements OnInit {
 
   @Input() rmButtonConfig!: RmButton;
+  @Input() disabled: boolean = false;
   @Output() rmButtonClick: EventEmitter<void> = new EventEmitter<void>();
 
   ButtonSizeEnum = ButtonSizeEnum;

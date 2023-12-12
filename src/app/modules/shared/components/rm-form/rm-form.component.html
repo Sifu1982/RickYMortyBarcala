@@ -8,6 +8,6 @@
         {{ gender }}
       </option>
     </select>
-    <rm-button (rmButtonClick)="onResetPressed()" [rmButtonConfig]="buttonConfig"></rm-button>
+    <rm-button (rmButtonClick)="onResetPressed()" [rmButtonConfig]="buttonConfig" [disabled]="!isFormChanged"></rm-button>
   </div>
 </form>
