@@ -1,4 +1,7 @@
-<rm-form (genderChanged)="onFormChange($event)"></rm-form>
+<rm-form (formChanged)="onFormChange($event)" (resetPressed)="($event)"></rm-form>
+<div *ngIf="characters.length === 0" class="not-found-message">
+  Character not found
+</div>
 <div *ngIf="characters" class="home__cards">
   <ng-container *ngFor="let character of characters">
     <div (click)="navigateToDetail(character.id)" class="home__cards--button">
