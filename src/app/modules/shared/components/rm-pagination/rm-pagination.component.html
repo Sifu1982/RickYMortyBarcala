@@ -1,4 +1,5 @@
 <div>
-  <rm-button *ngIf="!disableButton" (rmButtonClick)="onPrevPressed()" [rmButtonConfig]="prevButtonConfig"></rm-button>
-  <rm-button (rmButtonClick)="onNextPressed()" [rmButtonConfig]="nextButtonConfig"></rm-button>
+  <rm-button *ngIf="!disablePrevButton" (rmButtonClick)="onPrevPressed()" [rmButtonConfig]="prevButtonConfig"></rm-button>
+  <span *ngIf="characterCount"> Showing {{ characterCount }} characters.   Page {{counter}} - {{pages}}</span>
+  <rm-button *ngIf="!disableNextButton" (rmButtonClick)="onNextPressed()" [rmButtonConfig]="nextButtonConfig"></rm-button>
 </div>
