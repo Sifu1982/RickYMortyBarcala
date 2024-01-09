@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RmForm } from '../../shared/interfaces/rm-form.interface';
-import { CharacterGenderEnum } from '../enums/home-character-gender.enum';
 import { HomeCharacter } from '../interfaces/home-character.interface';
 import { HomeService } from '../services/home.service';
 
@@ -16,11 +15,17 @@ export class HomeComponent implements OnInit {
   public characterNotFound = false;
   public gender = '';
   public name = '';
+  public disablePrevButton: boolean = true;
+  public disableNextButton: boolean = false;
+  public characterCount: number = 0;
+  public pages: number = 0;
+  public counter: number = 1;
 
   constructor(private charactersService: HomeService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllCharacters();
+    this.paginationInfo();
   }
 
   private getAllCharacters(): void {
@@ -62,6 +67,11 @@ export class HomeComponent implements OnInit {
   }
 
   public getPageCharacters(page: string): void {
+    if (page === 'next') {
+      this.counter++;
+    } else if (page === 'prev' && this.counter > 1) {
+      this.counter--;
+    }
     this.charactersService
       .getCharactersByPage(this.gender, this.name, page)
       .subscribe({
@@ -80,5 +90,15 @@ export class HomeComponent implements OnInit {
   public onResetPressed() {
     this.gender = ''
     this.name = ''
+  }
+
+  private paginationInfo() {
+    this.charactersService.paginationInfo.subscribe(({ characterCount, pages, resetCounter, previousPage }) => {
+      this.characterCount = characterCount;
+      this.pages = pages;
+      if (resetCounter) this.counter = resetCounter;
+      this.disablePrevButton = !!previousPage ? false : true;
+      this.disableNextButton = this.counter === this.pages;
+    });
   }
 }

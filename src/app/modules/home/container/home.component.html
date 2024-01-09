@@ -1,5 +1,12 @@
 <rm-form (formChanged)="onFormChange($event)" (resetPressed)="onResetPressed()"></rm-form>
-<rm-pagination (nextPressed)="getPageCharacters('next')" (prevPressed)="getPageCharacters('prev')">
+<rm-pagination
+  [characterCount]="characterCount"
+  [counter]="counter"
+  [disableNextButton]="disableNextButton"
+  [disablePrevButton]="disablePrevButton"
+  [pages]="pages"
+  (nextPressed)="getPageCharacters('next')"
+  (prevPressed)="getPageCharacters('prev')">
 </rm-pagination>
 <div *ngIf="characterNotFound" class="not-found-message">
   Character not found
