@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { ButtonColorEnum, ButtonSizeEnum, RmButton } from "../../interfaces/rm-button.interface";
+import { RmPageInfo } from "../../interfaces/rm-page-info.interface";
 
 @Component({
   selector: 'rm-pagination',
@@ -10,11 +11,13 @@ export class RmPaginationComponent {
 
   @Output() nextPressed: EventEmitter<void> = new EventEmitter<void>();
   @Output() prevPressed: EventEmitter<void> = new EventEmitter<void>();
-  @Input() disablePrevButton: boolean = true;
-  @Input() disableNextButton: boolean = false;
-  @Input() characterCount: number = 0;
-  @Input() pages: number = 0;
-  @Input() counter: number = 1;
+  @Input() pageInfo: RmPageInfo = {
+    characterCount: 0,
+    counter: 1,
+    disableNextButton: false,
+    disablePrevButton: true,
+    pages: 0
+  };
 
   public nextButtonConfig: RmButton = {
     text: '>',

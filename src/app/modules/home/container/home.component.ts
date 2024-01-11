@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RmForm } from '../../shared/interfaces/rm-form.interface';
 import { HomeCharacter } from '../interfaces/home-character.interface';
 import { HomeService } from '../services/home.service';
+import { RmPageInfo } from '../../shared/interfaces/rm-page-info.interface';
 
 @Component({
   templateUrl: 'home.component.html',
@@ -15,11 +16,14 @@ export class HomeComponent implements OnInit {
   public characterNotFound = false;
   public gender = '';
   public name = '';
-  public disablePrevButton: boolean = true;
-  public disableNextButton: boolean = false;
-  public characterCount: number = 0;
-  public pages: number = 0;
-  public counter: number = 1;
+
+  pageInfo: RmPageInfo = {
+    characterCount: 0,
+    counter: 1,
+    disableNextButton: false,
+    disablePrevButton: true,
+    pages: 0
+  };
 
   constructor(private charactersService: HomeService, private router: Router) { }
 
@@ -68,9 +72,9 @@ export class HomeComponent implements OnInit {
 
   public getPageCharacters(page: string): void {
     if (page === 'next') {
-      this.counter++;
-    } else if (page === 'prev' && this.counter > 1) {
-      this.counter--;
+      this.pageInfo.counter++;
+    } else if (page === 'prev' && this.pageInfo.counter > 1) {
+      this.pageInfo.counter--;
     }
     this.charactersService
       .getCharactersByPage(this.gender, this.name, page)
@@ -94,11 +98,15 @@ export class HomeComponent implements OnInit {
 
   private paginationInfo() {
     this.charactersService.paginationInfo.subscribe(({ characterCount, pages, resetCounter, previousPage }) => {
-      this.characterCount = characterCount;
-      this.pages = pages;
-      if (resetCounter) this.counter = resetCounter;
-      this.disablePrevButton = !!previousPage ? false : true;
-      this.disableNextButton = this.counter === this.pages;
+      this.pageInfo.characterCount = characterCount;
+      this.pageInfo.pages = pages;
+      if (resetCounter) this.pageInfo.counter = resetCounter;
+      this.pageInfo.disablePrevButton = !!previousPage ? false : true;
+      this.pageInfo.disableNextButton = this.pageInfo.counter === this.pageInfo.pages;
     });
+  }
+
+  characterTrackByID(index: number, character:HomeCharacter): number {
+    return character.id;
   }
 }

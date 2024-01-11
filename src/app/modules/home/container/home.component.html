@@ -1,10 +1,6 @@
 <rm-form (formChanged)="onFormChange($event)" (resetPressed)="onResetPressed()"></rm-form>
 <rm-pagination
-  [characterCount]="characterCount"
-  [counter]="counter"
-  [disableNextButton]="disableNextButton"
-  [disablePrevButton]="disablePrevButton"
-  [pages]="pages"
+  [pageInfo] = "pageInfo"
   (nextPressed)="getPageCharacters('next')"
   (prevPressed)="getPageCharacters('prev')">
 </rm-pagination>
@@ -12,7 +8,7 @@
   Character not found
 </div>
 <div *ngIf="characters" class="home__cards">
-  <ng-container *ngFor="let character of characters">
+  <ng-container *ngFor="let character of characters; trackBy: characterTrackByID">
     <div (click)="navigateToDetail(character.id)" class="home__cards--button">
       <rm-card [character]="character" class="home__cards--card"></rm-card>
     </div>
