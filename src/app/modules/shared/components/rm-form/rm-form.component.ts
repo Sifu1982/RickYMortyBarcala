@@ -44,4 +44,8 @@ export class RmFormComponent implements OnInit {
     this.searchForm.get('gender')?.setValue(CharacterGenderEnum.ALL);
     this.resetPressed.emit()
   }
+
+  trackByGender(index: number, gender: CharacterGenderEnum): string {
+    return gender;
+  }
 }
