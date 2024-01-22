@@ -1,0 +1,35 @@
+.login-card__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-card__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 10px 10px 10px 10px;
+
+
+  &--field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    font-family: monospace;
+    &--label {
+      width: auto;
+    }
+    &--input {
+      width: 100%;
+    }
+  }
+}
+
+@media (min-width: 500px) {
+  .login-card__form {
+    max-width: 500px;
+    margin: auto;
+  }
+}
