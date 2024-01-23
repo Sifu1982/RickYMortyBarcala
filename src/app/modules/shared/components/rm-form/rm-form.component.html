@@ -4,10 +4,10 @@
     <input type="text" formControlName="name">
     <label>Gender:</label>
     <select formControlName="gender">
-      <option *ngFor="let gender of genderOptions" [value]="gender">
+      <option *ngFor="let gender of genderOptions; trackBy: trackByGender" [value]="gender">
         {{ gender }}
       </option>
     </select>
-    <rm-button (rmButtonClick)="onResetPressed()" [rmButtonConfig]="buttonConfig" [disabled]="!isFormChanged"></rm-button>
+    <rm-button (rmButtonClick)="onResetPressed()" [rmButtonConfig]="buttonConfig"></rm-button>
   </div>
 </form>

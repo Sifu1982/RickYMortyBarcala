@@ -18,7 +18,6 @@ export class RmFormComponent implements OnInit {
   public genderEnum = CharacterGenderEnum;
   public searchForm!: FormGroup;
   public genderOptions: CharacterGenderEnum[] = [...Object.values(CharacterGenderEnum)];
-  public isFormChanged = false;
 
   public buttonConfig: RmButton = {
     text: 'Reset',
@@ -36,14 +35,17 @@ export class RmFormComponent implements OnInit {
       gender: new FormControl(CharacterGenderEnum.ALL)
     });
     this.searchForm.valueChanges.subscribe((formValue: RmForm) => {
-      this.isFormChanged = true;
       this.formChanged.emit(formValue);
     });
   }
 
   public onResetPressed() {
-    this.searchForm.reset({ gender: 'All', name:''})
-    this.resetPressed.emit();
-    this.isFormChanged = false;
+    this.searchForm.get('name')?.setValue('');
+    this.searchForm.get('gender')?.setValue(CharacterGenderEnum.ALL);
+    this.resetPressed.emit()
+  }
+
+  trackByGender(index: number, gender: CharacterGenderEnum): string {
+    return gender;
   }
 }
