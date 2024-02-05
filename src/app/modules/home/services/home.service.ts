@@ -13,58 +13,32 @@ export class HomeService {
 
   private baseUrl = `${development.apiUrl}/character`;
   private nextPage = '';
-  public prevPage = '' || null;
+  public prevPage = 0;
   public paginationInfo: EventEmitter<{
     characterCount: number,
     pages: number,
     resetCounter?: number,
-    previousPage?: string
-  }> = new EventEmitter<{ characterCount: number, pages: number, resetCounter?: number, previousPage?: string }>();
+    previousPage?: number
+  }> = new EventEmitter<{ characterCount: number, pages: number, resetCounter?: number, previousPage?: number }>();
 
+  getCharactersByPage(gender: string, name: string, page: number): Observable<HomeCharacter[]> {
 
-  getAllCharacters(): Observable<HomeCharacter[]> {
-    const url = this.baseUrl;
+    if (gender === 'All') gender = '';
+    let params = new HttpParams();
+    params = params.set('gender', gender);
+    params = params.set('name', name);
+    params = params.set('page', page);
+    const url = `${this.baseUrl}?${params.toString()}`;
+    console.log('servicio url:', url);
+
     return this.http.get<CharacterResponse>(url).pipe(
       map<CharacterResponse, HomeCharacter[]>((characterResponse: CharacterResponse) => {
         this.nextPage = characterResponse.info.next;
-        this.prevPage = characterResponse.info.prev;
+        this.prevPage = page;
         const charactersNumbersInfo = {
           characterCount: characterResponse.info.count,
           pages: characterResponse.info.pages,
-          resetCounter: 1
-        };
-        this.paginationInfo.emit(charactersNumbersInfo);
-        return characterResponse.results.map((character: Character) => ({
-          gender: character.gender,
-          id: character.id,
-          image: character.image,
-          name: character.name,
-          origin: character.origin.name,
-        }));
-      })
-    );
-  }
-
-  getCharactersByPage(gender: string, name: string, pagination: string): Observable<HomeCharacter[]> {
-    let url: string;
-    if (pagination === 'next') {
-      url = `${this.nextPage}&gender=${gender}&name=${name}`
-    } else {
-      if (pagination === 'prev') {
-        url = `${this.prevPage}&gender=${gender}&name=${name}`
-      }
-      else {
-        url = this.baseUrl
-      }
-    }
-    return this.http.get<CharacterResponse>(url).pipe(
-      map<CharacterResponse, HomeCharacter[]>((characterResponse: CharacterResponse) => {
-        this.nextPage = characterResponse.info.next;
-        this.prevPage = characterResponse.info.prev;
-        const charactersNumbersInfo = {
-          characterCount: characterResponse.info.count,
-          pages: characterResponse.info.pages,
-          previousPage: this.prevPage !== null ? this.prevPage : '',
+          previousPage: page,
           nextPag: this.nextPage
         };
         this.paginationInfo.emit(charactersNumbersInfo);
@@ -79,21 +53,22 @@ export class HomeService {
     );
   }
 
-  getCharacterForm(gender: string, name: string): Observable<HomeCharacter[]> {
+  getCharacterForm(gender: string, name: string, page: number): Observable<HomeCharacter[]> {
     if (gender === 'All') gender = '';
     let params = new HttpParams();
     params = params.set('gender', gender);
     params = params.set('name', name);
+    params = params.set('page', page);
 
     const url = `${this.baseUrl}?${params.toString()}`;
     return this.http.get<CharacterResponse>(url).pipe(
       map<CharacterResponse, HomeCharacter[]>((characterResponse: CharacterResponse) => {
         this.nextPage = characterResponse.info.next;
-        this.prevPage = characterResponse.info.prev;
+        this.prevPage = page;
         const charactersNumbersInfo = {
           characterCount: characterResponse.info.count,
           pages: characterResponse.info.pages,
-          resetCounter: 1
+          // resetCounter: 1
         };
         this.paginationInfo.emit(charactersNumbersInfo);
         return characterResponse.results.map((character: Character) => ({
