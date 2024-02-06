@@ -1,13 +1,21 @@
-<div>
-  <rm-button
-    [disabled]="pageInfo.disablePrevButton"
-    (rmButtonClick)="onPrevPressed()"
-    [rmButtonConfig]="prevButtonConfig">
-  </rm-button>
+<div class="container">
+  <ng-template [ngIf]="!pageInfo.disablePrevButton">
+    <rm-button
+      (rmButtonClick)="onPrevPressed()"
+      [rmButtonConfig]="prevButtonConfig">
+    </rm-button>
+  </ng-template>
+  <ng-template [ngIf]="pageInfo.disablePrevButton">
+    <div class="placeholder-div"></div>
+  </ng-template>
   <span *ngIf="pageInfo.characterCount"> Showing {{ pageInfo.characterCount }} characters. Page {{pageInfo.counter}} - {{pageInfo.pages}}</span>
-  <rm-button
-    [disabled]="pageInfo.disableNextButton"
-    (rmButtonClick)="onNextPressed()"
-    [rmButtonConfig]="nextButtonConfig">
-  </rm-button>
+  <ng-template [ngIf]="!pageInfo.disableNextButton">
+    <rm-button
+      (rmButtonClick)="onNextPressed()"
+      [rmButtonConfig]="nextButtonConfig">
+    </rm-button>
+  </ng-template>
+  <ng-template [ngIf]="pageInfo.disableNextButton">
+    <div class="placeholder-div"></div>
+  </ng-template>
 </div>
