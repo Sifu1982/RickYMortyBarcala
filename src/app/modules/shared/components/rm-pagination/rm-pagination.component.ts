@@ -15,7 +15,7 @@ export class RmPaginationComponent {
     characterCount: 0,
     counter: 1,
     disableNextButton: false,
-    disablePrevButton: true,
+    disablePrevButton: false,
     pages: 0
   };
 

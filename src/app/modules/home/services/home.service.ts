@@ -29,7 +29,6 @@ export class HomeService {
     params = params.set('name', name);
     params = params.set('page', page);
     const url = `${this.baseUrl}?${params.toString()}`;
-    console.log('servicio url:', url);
 
     return this.http.get<CharacterResponse>(url).pipe(
       map<CharacterResponse, HomeCharacter[]>((characterResponse: CharacterResponse) => {
