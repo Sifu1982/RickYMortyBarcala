@@ -1,13 +1,15 @@
-<form [formGroup]="searchForm">
+<form class="container" [formGroup]="searchForm">
   <div>
-    <label>Name:</label>
+    <label>Name: </label>
     <input type="text" formControlName="name">
-    <label>Gender:</label>
+  </div>
+  <div>
+    <label>Gender: </label>
     <select formControlName="gender">
       <option *ngFor="let gender of genderOptions; trackBy: trackByGender" [value]="gender">
         {{ gender }}
       </option>
     </select>
-    <rm-button (rmButtonClick)="onResetPressed()" [rmButtonConfig]="buttonConfig"></rm-button>
   </div>
+  <rm-button (rmButtonClick)="onResetPressed()" [rmButtonConfig]="buttonConfig"></rm-button>
 </form>

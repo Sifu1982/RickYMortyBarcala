@@ -2,10 +2,13 @@
 
   &__cards{
     display: flex;
+    justify-content: space-around;
     flex-wrap: wrap;
 
     &--button {
-      margin: 0 12px 24px 0;
+      margin-bottom: 10px;
+      margin-left: 10px;
+      max-height: fit-content;
     }
   }
 
