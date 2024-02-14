@@ -18,12 +18,24 @@
     flex-direction: column;
     margin-bottom: 10px;
     font-family: monospace;
+
     &--label {
       width: auto;
     }
+
     &--input {
       width: 100%;
     }
+  }
+
+  &--button {
+    margin-bottom: 10px;
+  }
+
+  &--errorMessage {
+    font-family: monospace;
+    color: red;
+    background-color: rgb(248, 174, 174);
   }
 }
 
